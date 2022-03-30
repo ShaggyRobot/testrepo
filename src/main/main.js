@@ -1,4 +1,3 @@
-import './main.css'
-// import './main.html';
+import './main.scss'
 
 console.log('I`m MAIN`');

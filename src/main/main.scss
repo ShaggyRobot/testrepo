@@ -1,6 +1,13 @@
 @import '../styles/_styles.scss';
 
-body {
-  background-color: bisque;
+@font-face {
+  font-family: 'Lemon';
+  src: url('../assets/Lemon Tea.ttf');
+}
+
+body, h1 {
+  // color: red;
+  background-color: rgb(241, 141, 19);
   background-image: url(../assets/forest.png);
+  font-family: Lemon
 }

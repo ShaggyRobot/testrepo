@@ -19,13 +19,13 @@ module.exports = {
 
   output: {
     filename: '[name]-[hash].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
 
   ...(isProd && { devtool: 'eval-source-map' }),
+
   devServer: {
-    // hot: true,
-    watchFiles: './src',
+    watchFiles: './src'
   },
 
   plugins: [
@@ -42,18 +42,27 @@ module.exports = {
       chunks: ['pets/pets']
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: '[name].css',
+      chunkFilename: '[name].'
     }),
-    new CopyPlugin({
-      patterns: [{ from: './src/assets', to: path.resolve(__dirname, 'dist/assets') }]
-    })
+    // new CopyPlugin({
+    //   patterns: [{ from: './src/assets', to: path.resolve(__dirname, 'dist/assets') }]
+    // })
   ],
 
   module: {
     rules: [
       {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
+      {
         test: /\.css$/i,
         use: [stylesHandler, 'css-loader']
+      },
+      {
+        test: /\.scss$/i,
+        use: [stylesHandler, 'css-loader', 'sass-loader']
       }
     ]
   }
