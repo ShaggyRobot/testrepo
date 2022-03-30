@@ -29,7 +29,7 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(),
+    ...(isProd ? [new CleanWebpackPlugin()] : []),
     new HtmlWebpackPlugin({
       template: './src/main/main.html',
       inject: 'body',
